@@ -1,4 +1,7 @@
-yes<?php
+<?php
+require_once('./menubar.php');
+?>
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -18,9 +21,18 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["Product_ID"]. " - Name: " . $row["Name"]. " image <img src=\"". $row["Image"]."\">
-    " . $row["Image"]." Price " . $row["Price"]. " description " . $row["Description"]." quantity " . $row["Quantity"]."
-    <a href=\"ProductSinglePage.php?productId=".$row["Product_ID"]." \">show product </a>
+    echo
+    "id: " . $row["Product_ID"].
+    "Name: " . $row["Name"].
+    "image <img src='". $row["Image"]."'>
+    Price " . $row["Price"].
+    "description " . $row["Description"].
+    "quantity " . $row["Quantity"]."
+    <a 
+    href='ProductSinglePage.php?productId=".$row["Product_ID"]."' 
+    \>
+      show product 
+    </a>
     <br>";
   }
 } else {
@@ -28,5 +40,3 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-
-http://localhost:8080/ProductSinglePage.php?productId=3 
